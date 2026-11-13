@@ -1,0 +1,31 @@
+<!doctype html>
+<html><head><meta charset="utf-8"/>
+<style>
+@font-face{font-family:Barlow;src:url("fonts/barlow-700.woff2") format("woff2");font-weight:700}
+@font-face{font-family:Barlow;src:url("fonts/barlow-600.woff2") format("woff2");font-weight:600}
+@font-face{font-family:Inter;src:url("fonts/inter-500.woff2") format("woff2");font-weight:500}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1280px;height:720px;overflow:hidden;background:#0a1116}
+#frame{position:absolute;inset:0;background:url("launch-front.png") center 46%/cover no-repeat;filter:saturate(1.18) contrast(1.12) brightness(1.04)}
+/* Cinematic split grade: cool shadows, warm light on the bomber. */
+#grade{position:absolute;inset:0;background:linear-gradient(105deg,rgba(5,14,20,.08) 0%,rgba(6,13,19,.12) 34%,rgba(5,11,16,.78) 57%,rgba(4,9,13,.96) 100%)}
+#warm{position:absolute;inset:0;background:radial-gradient(ellipse at 26% 46%,rgba(255,171,83,.2),transparent 48%);mix-blend-mode:screen}
+#vignette{position:absolute;inset:0;box-shadow:inset 0 0 180px 45px rgba(0,0,0,.6);background:linear-gradient(180deg,rgba(0,0,0,.35),transparent 20%,transparent 76%,rgba(0,0,0,.72))}
+#rule{position:absolute;right:68px;top:176px;width:74px;height:8px;background:#e0a34f}
+#kicker{position:absolute;right:68px;top:118px;text-align:right;font:500 25px Inter,sans-serif;letter-spacing:.34em;color:#e8c897;text-shadow:0 2px 12px #000}
+#title{position:absolute;right:62px;top:206px;text-align:right;font-family:Barlow,sans-serif;font-weight:700;line-height:.88;letter-spacing:-.015em;text-transform:uppercase}
+#title .the{display:block;font-size:58px;letter-spacing:.32em;color:#d9e1e5;margin-bottom:16px;text-shadow:0 3px 18px #000}
+#title .doolittle{display:block;font-size:128px;color:#fff;text-shadow:0 5px 28px rgba(0,0,0,.85)}
+#title .raid{display:block;font-size:190px;color:#efad52;text-shadow:0 6px 32px rgba(0,0,0,.9)}
+#tagline{position:absolute;right:68px;bottom:86px;text-align:right;font:600 34px Barlow,sans-serif;letter-spacing:.13em;color:#f2f4f3;text-shadow:0 3px 14px #000}
+#tagline b{color:#efad52;font-weight:700}
+#bottomline{position:absolute;left:0;right:0;bottom:0;height:12px;background:linear-gradient(90deg,#b87a31 0 38%,#1b2a33 38% 100%)}
+#date{position:absolute;left:58px;top:48px;font:500 22px Inter,sans-serif;letter-spacing:.28em;color:#f0e7d4;text-shadow:0 2px 12px #000}
+</style></head><body>
+<div id="frame"></div><div id="grade"></div><div id="warm"></div><div id="vignette"></div>
+<div id="date">18 APRIL 1942 · USS HORNET</div>
+<div id="kicker">AMERICA STRIKES BACK</div><div id="rule"></div>
+<div id="title"><span class="the">THE</span><span class="doolittle">DOOLITTLE</span><span class="raid">RAID</span></div>
+<div id="tagline">16 BOMBERS. <b>ONE IMPOSSIBLE MISSION.</b></div>
+<div id="bottomline"></div>
+</body></html>

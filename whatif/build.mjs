@@ -35,8 +35,8 @@ const html = `<!doctype html>
   #root { position: relative; width: 1920px; height: 1080px; }
   #gl { position: absolute; inset: 0; width: 1920px; height: 1080px; display: block; }
   #grain { position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(0,0,0,0) 60%, rgba(0,0,0,0.55) 100%); pointer-events: none; }
-  #eyebrow { position: absolute; left: 160px; top: 150px; font-family: Inter, sans-serif; font-weight: 300; font-size: 34px; letter-spacing: 0.5em; color: #9fb7d8; opacity: 0; }
-  #title { position: absolute; left: 160px; top: 200px; font-family: Inter, sans-serif; font-weight: 600; font-size: 118px; line-height: 1.05; letter-spacing: -0.02em; color: #ffffff; max-width: 1100px; opacity: 0; }
+  #eyebrow { position: absolute; right: 160px; top: 150px; text-align: right; font-family: Inter, sans-serif; font-weight: 300; font-size: 34px; letter-spacing: 0.5em; color: #9fb7d8; opacity: 0; }
+  #title { position: absolute; right: 160px; top: 200px; text-align: right; font-family: Inter, sans-serif; font-weight: 600; font-size: 118px; line-height: 1.05; letter-spacing: -0.02em; color: #ffffff; max-width: 1100px; opacity: 0; }
   #stat { position: absolute; right: 160px; top: 170px; text-align: right; font-family: Inter, sans-serif; color: #fff; opacity: 0; }
   #stat b { display: block; font-weight: 600; font-size: 150px; line-height: 1; }
   #stat span { display: block; font-weight: 300; font-size: 30px; letter-spacing: 0.2em; color: #9fb7d8; margin-top: 12px; }
@@ -62,7 +62,7 @@ ${audio}
   <script type="module" src="scene.js"></script>
   <script>
   const tl = gsap.timeline({ paused: true });
-  tl.fromTo("#eyebrow", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 1.0, ease: "power3.out" }, 0.4);
+  tl.fromTo("#eyebrow", { opacity: 0, x: 30 }, { opacity: 1, x: 0, duration: 1.0, ease: "power3.out" }, 0.4);
   tl.fromTo("#title", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 1.2, ease: "power3.out" }, 0.9);
   tl.to("#eyebrow, #title", { opacity: 0, duration: 0.7, ease: "power2.in" }, ${r2(scenes[0].start + scenes[0].duration - 0.9)});
   tl.fromTo("#stat", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" }, ${r2(scenes[2].start + 2.2)});

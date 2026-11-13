@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1920, height=1080" />
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;600&display=swap" rel="stylesheet" />
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1920px; height: 1080px; overflow: hidden; background: #000; }
+  #root { position: relative; width: 1920px; height: 1080px; }
+  #gl { position: absolute; inset: 0; width: 1920px; height: 1080px; display: block; }
+  #grain { position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(0,0,0,0) 60%, rgba(0,0,0,0.55) 100%); pointer-events: none; }
+  #eyebrow { position: absolute; right: 160px; top: 150px; text-align: right; font-family: Inter, sans-serif; font-weight: 300; font-size: 34px; letter-spacing: 0.5em; color: #9fb7d8; opacity: 0; }
+  #title { position: absolute; right: 160px; top: 200px; text-align: right; font-family: Inter, sans-serif; font-weight: 600; font-size: 118px; line-height: 1.05; letter-spacing: -0.02em; color: #ffffff; max-width: 1100px; opacity: 0; }
+  #stat { position: absolute; right: 160px; top: 170px; text-align: right; font-family: Inter, sans-serif; color: #fff; opacity: 0; }
+  #stat b { display: block; font-weight: 600; font-size: 150px; line-height: 1; }
+  #stat span { display: block; font-weight: 300; font-size: 30px; letter-spacing: 0.2em; color: #9fb7d8; margin-top: 12px; }
+  #caps { position: absolute; left: 0; right: 0; bottom: 120px; }
+  .cap { position: absolute; left: 0; right: 0; bottom: 0; text-align: center; font-family: Inter, sans-serif; font-weight: 300; font-size: 44px; line-height: 1.35; color: #eef3ff; text-shadow: 0 2px 20px rgba(0,0,0,0.9); opacity: 0; padding: 0 260px; }
+  #credit { position: absolute; left: 0; right: 0; bottom: 50px; text-align: center; font-family: Inter, sans-serif; font-weight: 300; font-size: 22px; letter-spacing: 0.4em; color: #7f93b3; opacity: 0; }
+</style>
+</head>
+<body>
+  <div id="root" data-composition-id="main" data-start="0" data-duration="71.3" data-width="1920" data-height="1080">
+    <canvas id="gl" width="1920" height="1080" class="clip" data-start="0" data-duration="71.3" data-track-index="0"></canvas>
+    <div id="grain"></div>
+    <div id="eyebrow" class="clip" data-start="0" data-duration="71.3" data-track-index="3">WHAT IF</div>
+    <h1 id="title" class="clip" data-start="0" data-duration="71.3" data-track-index="3">The Moon disappeared?</h1>
+    <div id="stat" class="clip" data-start="0" data-duration="71.3" data-track-index="3"><b>−66%</b><span>TIDAL RANGE</span></div>
+    <div id="caps">
+      <p class="cap clip" id="cap-hook" data-start="0" data-duration="10.98" data-track-index="2">What if, one night, the Moon simply disappeared?</p>
+      <p class="cap clip" id="cap-gone" data-start="10.98" data-duration="12.58" data-track-index="2">No explosion. No warning. Just an empty patch of sky where our oldest companion used to be.</p>
+      <p class="cap clip" id="cap-tides" data-start="23.56" data-duration="17.54" data-track-index="2">Within hours, the tides collapse to a third of their height. Coastlines fall silent, and the ocean currents that carry heat around the planet begin to falter.</p>
+      <p class="cap clip" id="cap-wobble" data-start="41.1" data-duration="17.78" data-track-index="2">Over the centuries, Earth loses its anchor. Our planet's tilt starts to wander, swinging wildly, and the seasons we know are torn apart.</p>
+      <p class="cap clip" id="cap-dark" data-start="58.88" data-duration="12.42" data-track-index="2">The nights grow darker than any human has ever seen. The Moon was never just a light in the sky. It was the quiet hand that kept our world steady.</p>
+    </div>
+    <div id="credit" class="clip" data-start="0" data-duration="71.3" data-track-index="3">THREE.JS · HYPERFRAMES · VOICE BY QWEN3-TTS 1.7B · NASA BLUE MARBLE TEXTURES</div>
+    <audio id="vo-hook" src="audio/hook.wav" data-start="0.9" data-duration="8.48" data-track-index="1" data-volume="1"></audio>
+    <audio id="vo-gone" src="audio/gone.wav" data-start="11.88" data-duration="10.08" data-track-index="1" data-volume="1"></audio>
+    <audio id="vo-tides" src="audio/tides.wav" data-start="24.46" data-duration="15.04" data-track-index="1" data-volume="1"></audio>
+    <audio id="vo-wobble" src="audio/wobble.wav" data-start="42" data-duration="15.28" data-track-index="1" data-volume="1"></audio>
+    <audio id="vo-dark" src="audio/dark.wav" data-start="59.78" data-duration="9.92" data-track-index="1" data-volume="1"></audio>
+  </div>
+  <script>window.__SCENES = [{"id":"hook","start":0,"duration":10.98,"audioStart":0.9},{"id":"gone","start":10.98,"duration":12.58,"audioStart":11.88},{"id":"tides","start":23.56,"duration":17.54,"audioStart":24.46},{"id":"wobble","start":41.1,"duration":17.78,"audioStart":42},{"id":"dark","start":58.88,"duration":12.42,"audioStart":59.78}];</script>
+  <script type="module" src="scene.js"></script>
+  <script>
+  const tl = gsap.timeline({ paused: true });
+  tl.fromTo("#eyebrow", { opacity: 0, x: 30 }, { opacity: 1, x: 0, duration: 1.0, ease: "power3.out" }, 0.4);
+  tl.fromTo("#title", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 1.2, ease: "power3.out" }, 0.9);
+  tl.to("#eyebrow, #title", { opacity: 0, duration: 0.7, ease: "power2.in" }, 10.08);
+  tl.fromTo("#stat", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" }, 25.76);
+  tl.to("#stat", { opacity: 0, duration: 0.6 }, 40.3);
+  tl.fromTo("#cap-hook", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" }, 0.9);
+  tl.to("#cap-hook", { opacity: 0, duration: 0.6, ease: "power2.in" }, 10.28);
+  tl.fromTo("#cap-gone", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" }, 11.88);
+  tl.to("#cap-gone", { opacity: 0, duration: 0.6, ease: "power2.in" }, 22.86);
+  tl.fromTo("#cap-tides", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" }, 24.46);
+  tl.to("#cap-tides", { opacity: 0, duration: 0.6, ease: "power2.in" }, 40.4);
+  tl.fromTo("#cap-wobble", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" }, 42);
+  tl.to("#cap-wobble", { opacity: 0, duration: 0.6, ease: "power2.in" }, 58.18);
+  tl.fromTo("#cap-dark", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" }, 59.78);
+  tl.to("#cap-dark", { opacity: 0, duration: 0.6, ease: "power2.in" }, 70.6);
+  tl.fromTo("#credit", { opacity: 0 }, { opacity: 1, duration: 1.0 }, 68.1);
+  tl.set({}, {}, 71.3);
+  window.__timelines["main"] = tl;
+  tl.seek(0);
+  </script>
+</body>
+</html>

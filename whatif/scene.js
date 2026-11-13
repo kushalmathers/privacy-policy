@@ -25,7 +25,7 @@ const [earthMap, earthNormal, earthSpec, cloudMap, moonMap, lightsMap] = await P
 ]);
 
 // --- sun: one strong directional key, faint fill so the night side is not pure black
-const sun = new THREE.DirectionalLight(0xfff4e0, 3.2); sun.position.set(-40, 8, 30); scene.add(sun);
+const sun = new THREE.DirectionalLight(0xfff4e0, 3.2); sun.position.set(30, 10, 40); scene.add(sun);
 scene.add(new THREE.AmbientLight(0x223355, 0.12));
 const sunDisc = new THREE.Mesh(new THREE.SphereGeometry(18, 32, 16), new THREE.MeshBasicMaterial({ color: 0xffffff }));
 sunDisc.position.copy(sun.position).normalize().multiplyScalar(1800); scene.add(sunDisc);
@@ -62,7 +62,7 @@ const atmo = new THREE.Mesh(new THREE.SphereGeometry(R * 1.035, 96, 48), new THR
   uniforms: { uSun: { value: sun.position.clone().normalize() }, uStrength: { value: 1.0 } },
   vertexShader: `varying vec3 vN; varying vec3 vWP; void main(){ vN = normalize(mat3(modelMatrix)*normal); vec4 wp = modelMatrix*vec4(position,1.0); vWP = wp.xyz; gl_Position = projectionMatrix*viewMatrix*wp; }`,
   fragmentShader: `varying vec3 vN; varying vec3 vWP; uniform vec3 uSun; uniform float uStrength;
-    void main(){ vec3 V = normalize(cameraPosition - vWP); float rim = pow(1.0 - max(dot(V, -vN), 0.0), 3.2);
+    void main(){ vec3 V = normalize(cameraPosition - vWP); float rim = pow(clamp(1.0 - dot(V, -vN), 0.0, 1.0), 3.2);
       float day = clamp(dot(vN, uSun) * 1.4 + 0.35, 0.0, 1.0);
       vec3 col = mix(vec3(0.05,0.12,0.35), vec3(0.35,0.62,1.0), day);
       gl_FragColor = vec4(col * rim * uStrength * 1.6, rim * uStrength); }`
@@ -71,7 +71,7 @@ earthTilt.add(atmo);
 earthTilt.rotation.z = THREE.MathUtils.degToRad(-23.4);
 
 // --- Moon
-const MOON_D = 60; // compressed for the frame; the real ratio would push it off screen
+const MOON_D = 36; // compressed for the frame; the real ratio would push it off screen
 const moonPivot = new THREE.Group(); scene.add(moonPivot);
 const moon = new THREE.Mesh(new THREE.SphereGeometry(R * 0.2727, 96, 48), new THREE.MeshStandardMaterial({ map: moonMap, roughness: 0.95, metalness: 0 }));
 moon.position.set(MOON_D, 0, 0); moonPivot.add(moon);
@@ -130,12 +130,12 @@ function renderAt(t) {
   if (i === 0) {
     // wide establishing: earth left, moon right, slow push in
     const k = smooth(p);
-    lookFrom(v(lerp(-8, -4, k), lerp(14, 9, k), lerp(95, 70, k)), v(lerp(22, 20, k), 0, 0));
+    lookFrom(v(lerp(2, 0, k), lerp(9, 7, k), lerp(62, 54, k)), v(12, 2, 0));
   } else if (i === 1) {
     // hold on the moon, it vanishes, camera drifts back to earth
     const k = easeInOut((u - 3.0) / (d - 3.0));
     const mp = moon.getWorldPosition(new THREE.Vector3());
-    const from = v(mp.x - 6, 2.5, 14), to = v(mp.x, 0, 0);
+    const from = v(mp.x + 8, 3, mp.z + 14), to = v(mp.x * 0.4, 0, mp.z * 0.4);
     lookFrom(from.lerp(v(-2, 6, 40), k), to.lerp(v(0, 0, 0), k));
   } else if (i === 2) {
     // low orbit over the ocean limb, terminator in view

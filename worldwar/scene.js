@@ -64,13 +64,13 @@ const oceanMat = new THREE.ShaderMaterial({
       float spec=pow(max(0.,dot(reflect(-uSun,N),V)),90.);
       float foam=smoothstep(.85,1.5,wave+rip*.18);
       vec3 deep=vec3(.018,.085,.11), shallow=vec3(.12,.25,.28);
-      vec3 c=mix(deep,shallow,fres)+spec*vec3(1.,.83,.58)*1.5+foam*vec3(.34,.40,.40);
+      vec3 c=mix(deep,shallow,fres)+spec*vec3(1.,.83,.58)*.65+foam*vec3(.25,.30,.30);
       gl_FragColor=vec4(c,1.);}`
 });
 const ocean = new THREE.Mesh(new THREE.PlaneGeometry(1400, 1400, 180, 180), oceanMat);
 ocean.rotation.x = -Math.PI / 2; ocean.position.y = -6.2; scene.add(ocean);
 
-const metal = new THREE.MeshStandardMaterial({ color: 0x657064, roughness: 0.52, metalness: 0.62 });
+const metal = new THREE.MeshStandardMaterial({ color: 0x7f8674, roughness: 0.48, metalness: 0.58 });
 const darkMetal = new THREE.MeshStandardMaterial({ color: 0x171c1c, roughness: 0.65, metalness: 0.5 });
 const black = new THREE.MeshStandardMaterial({ color: 0x090b0b, roughness: 0.82 });
 const glass = new THREE.MeshPhysicalMaterial({ color: 0x7395a2, roughness: 0.12, metalness: 0.15, transparent: true, opacity: 0.58 });
@@ -271,7 +271,7 @@ function renderAt(t) {
   const launch = smooth((t - 5.7) / 3.4);
   const shake = t < 6 ? Math.sin(t * 37) * 0.025 + Math.sin(t * 23) * 0.018 : 0;
   const close = v(9.2 + Math.sin(t * 0.35) * 1.2, 4.2 + shake, state.z - 14.5);
-  const wide = v(24, 10 + launch * 8, state.z + 8);
+  const wide = v(18, state.y + 4 + launch * 4, state.z - 25);
   camera.position.copy(close.lerp(wide, launch));
   const target = v(0, state.y + 0.2, state.z - lerp(0.8, 3.0, launch));
   camera.lookAt(target);

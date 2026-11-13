@@ -2,6 +2,7 @@ node_modules/
 out/
 *.log
 .hyperframes/
+thumbnail-source.html
 renders/work-*/
 renders/snap*/
 renders/recheck*/

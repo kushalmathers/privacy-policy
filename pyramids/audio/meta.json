@@ -1,0 +1,26 @@
+{
+  "intro": {
+    "text": "Four thousand five hundred years ago, on the edge of the Sahara, workers raised the Great Pyramid of Giza. More than two million stone blocks. No modern machines. How did they build it?",
+    "duration": 21.04
+  },
+  "quarry": {
+    "text": "The answer began in the quarries. Most of the pyramid's limestone was cut near Giza, while brilliant white casing stone came from Tura. Copper tools, stone hammers, and wooden wedges helped workers separate blocks from the bedrock.",
+    "duration": 17.44
+  },
+  "transport": {
+    "text": "Moving the stone was a triumph of logistics. Crews loaded blocks onto wooden sledges and hauled them across prepared tracks. Boats carried Tura limestone along the Nile. The logbook of an overseer named Merer records these journeys to Giza.",
+    "duration": 19.36
+  },
+  "ramps": {
+    "text": "At the construction site, teams raised the pyramid one course at a time. Ramps almost certainly played a central role, but their exact design remains debated. Straight, wrapping, or internal systems may have helped workers haul blocks to the growing summit.",
+    "duration": 17.36
+  },
+  "casing": {
+    "text": "Surveyors kept the sides remarkably level and aligned. Masons fitted each course, then covered the stepped core with fine white limestone. A smooth, gleaming surface once caught the desert sun, crowned by a pyramidion.",
+    "duration": 15.44
+  },
+  "workers": {
+    "text": "This was not simply an army of enslaved people. Archaeology reveals organized teams of skilled workers, supported by bakers, brewers, doctors, and rotating laborers. Their achievement was not magic. It was engineering, logistics, and human effort on an extraordinary scale.",
+    "duration": 26.48
+  }
+}

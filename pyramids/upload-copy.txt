@@ -1,0 +1,21 @@
+TITLE
+How the Pyramids Were Really Built | Ancient Egypt 3D Documentary
+
+DESCRIPTION
+Around 2550 BCE, workers raised the Great Pyramid of Giza using quarried limestone, wooden sledges, boats, ramps, and extraordinary organization. This original 3D documentary follows the evidence from quarry to construction site, including Merer's logbook and the skilled workforce behind the monument.
+
+CHAPTERS
+00:00 THE GREAT PYRAMID
+00:23 CUT FROM THE EARTH
+00:42 STONE IN MOTION
+01:04 RAISING THE COURSES
+01:24 A WHITE STONE MOUNTAIN
+01:41 THE PEOPLE WHO BUILT IT
+
+The exact ramp system used at Giza remains debated; the construction sequence shown here is a visualization of leading archaeological explanations, not a claim of certainty. Archaeological evidence points to organized teams of skilled workers and rotating laborers rather than the popular image of an entirely enslaved workforce.
+
+This is an original animated historical reconstruction. Visuals were created with Three.js and HyperFrames; narration was synthesized with Qwen3-TTS.
+
+Historical references: archaeological research at Giza, Hatnub, and Wadi al-Jarf; Pierre Tallet's publication of the Merer papyri (IFAO); Smithsonian and National Geographic reporting on pyramid construction.
+
+#Pyramids #AncientEgypt #History #Archaeology #GreatPyramid #Documentary

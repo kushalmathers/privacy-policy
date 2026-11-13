@@ -1,0 +1,18 @@
+{
+  "intro": {
+    "text": "In the age of warring states, a lone samurai walked the path of the sword.",
+    "duration": 5.84
+  },
+  "dawn": {
+    "text": "At dawn, beneath the crimson sky, he drew his blade and faced the silence.",
+    "duration": 6.88
+  },
+  "duel": {
+    "text": "Steel met steel. Every strike was a lifetime of discipline, every breath a vow.",
+    "duration": 7.84
+  },
+  "end": {
+    "text": "When the dust settled, only honor remained. The way of the warrior endures.",
+    "duration": 6.48
+  }
+}

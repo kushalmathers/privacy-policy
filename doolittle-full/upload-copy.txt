@@ -1,0 +1,20 @@
+TITLE
+The Doolittle Raid: America's First Strike Back | WWII Animated Documentary
+
+DESCRIPTION
+April 18, 1942: sixteen B-25 Mitchell bombers launched from USS Hornet on a mission never attempted before. This original 3D documentary recap follows the Doolittle Raid from the task force's detection and dramatic carrier launch to the strikes over Japan, the crews' escape, and the raid's lasting impact.
+
+CHAPTERS
+00:00 THE DOOLITTLE RAID
+00:13 THE TASK FORCE
+00:32 SPOTTED
+00:49 THE LAUNCH
+01:07 OVER JAPAN
+01:29 NO WAY HOME
+01:52 THE LEGACY
+
+This is an original animated historical summary, not archival footage. Visuals were created with Three.js and HyperFrames; narration was synthesized with Qwen3-TTS.
+
+Historical references: National WWII Museum; US Naval History and Heritage Command; Air Force historical accounts of the Doolittle Raid.
+
+#DoolittleRaid #WWII #History #Documentary #B25 #USNavy

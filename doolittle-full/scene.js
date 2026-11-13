@@ -45,7 +45,7 @@ const oceanMat = new THREE.ShaderMaterial({
       float spec=pow(max(0.,dot(reflect(-uSun,N),V)),90.);float foam=smoothstep(.85,1.5,wave+rip*.18);
       vec3 c=mix(vec3(.018,.065,.09),vec3(.10,.21,.25),fres)+spec*mix(vec3(.7,.85,1.),vec3(1.,.65,.3),uWarm)*.75+foam*vec3(.24,.29,.30);
       gl_FragColor=vec4(c,1.);}`
-}));
+});
 const ocean = new THREE.Mesh(new THREE.PlaneGeometry(1400, 1400, 150, 150), oceanMat);
 ocean.rotation.x = -Math.PI / 2; ocean.position.y = -6.2; scene.add(ocean);
 
@@ -142,7 +142,7 @@ function renderAt(t){
   oceanMat.uniforms.uTime.value=t;oceanMat.uniforms.uWarm.value=s.id==="legacy"?1:0;
   sky.material.uniforms.uWarm.value=s.id==="legacy"?1:s.id==="intro"?.3:0;
   scene.fog.color.set(s.id==="strike"?0x68716c:s.id==="escape"?0x8b9b90:s.id==="legacy"?0xb07953:0x65747b);
-  scene.fog.density=s.id==="escape"?.009:s.id==="strike"?.006:.0045;
+  scene.fog.density=s.id==="escape"?.0045:s.id==="strike"?.006:.0045;
   sun.color.set(s.id==="legacy"?0xffa24c:0xffd6a1);
   if(s.id==="intro"){
     intro.visible=true;animatePlanes(intro,t);const k=smooth(p);
@@ -162,8 +162,8 @@ function renderAt(t){
     look(v(lerp(-18,8,p),lerp(28,22,p),lerp(75,45,p)),v(0,8,lerp(0,-35,p)));
   }else if(s.id==="escape"){
     escape.visible=true;animatePlanes(escape,t);escapePlane.position.set(-25+u*3.5,22+Math.sin(u*.4)*2,-25-u*9);escapePlane.rotation.z=-.08;
-    parachutes.forEach((g,i)=>{const a=Math.max(0,u-2-i*.35);g.visible=a>0;g.position.set(-18+i*6+Math.sin(a*.5+i)*2,35-a*1.1,-30-i*5);g.rotation.y=a*.15;});
-    look(v(lerp(35,20,p),lerp(38,28,p),lerp(40,5,p)),v(0,lerp(16,12,p),lerp(-35,-65,p)));
+    parachutes.forEach((g,i)=>{const a=Math.max(0,u-2-i*.35);g.visible=a>0;g.scale.setScalar(1.5);g.position.set(-14+i*4+Math.sin(a*.5+i),26-a*.55,-15-i*4);g.rotation.y=a*.15;});
+    look(v(lerp(45,35,p),lerp(35,30,p),lerp(45,35,p)),v(0,lerp(20,17,p),-30));
   }else if(s.id==="legacy"){
     legacy.visible=true;animatePlanes(legacy,t);legacyPlanes.forEach((pl,i)=>{pl.position.z=-Math.floor(i/4)*35+u*2.5;pl.position.y=10+Math.floor(i/4)*5+Math.sin(u*.5+i)*.4;});
     look(v(lerp(-20,5,p),lerp(18,25,p),lerp(95,120,p)),v(0,15,-55));

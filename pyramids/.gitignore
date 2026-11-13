@@ -1,0 +1,8 @@
+node_modules/
+out/
+*.log
+.hyperframes/
+renders/work-*/
+renders/snap*/
+renders/recheck*/
+renders/doolittle-raid-full.mp4

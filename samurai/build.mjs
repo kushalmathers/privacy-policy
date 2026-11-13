@@ -58,7 +58,7 @@ ${audio}
   <script type="module" src="scene.js"></script>
   <script>
   const tl = gsap.timeline({ paused: true });
-  tl.fromTo("#title", { opacity: 0, letterSpacing: "0.6em" }, { opacity: 1, letterSpacing: "0.32em", duration: 1.6, ease: "power3.out" }, 0.3);
+  tl.fromTo("#title", { opacity: 0, scale: 1.12 }, { opacity: 1, scale: 1, duration: 1.6, ease: "power3.out" }, 0.3);
   tl.to("#title", { opacity: 0, duration: 0.8, ease: "power2.in" }, ${r2(scenes[0].start + scenes[0].duration - 1.0)});
   tl.fromTo("#kanji", { opacity: 0, y: -30 }, { opacity: 1, y: 0, duration: 1.2, ease: "power3.out" }, ${scenes[1].start});
   tl.to("#kanji", { opacity: 0, duration: 0.6 }, ${r2(scenes[2].start - 0.6)});

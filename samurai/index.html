@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1920, height=1080" />
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Cormorant+Garamond:ital,wght@1,500&display=swap" rel="stylesheet" />
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1920px; height: 1080px; overflow: hidden; background: #120407; }
+  #root { position: relative; width: 1920px; height: 1080px; }
+  #gl { position: absolute; inset: 0; width: 1920px; height: 1080px; display: block; }
+  #vignette { position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(0,0,0,0) 55%, rgba(0,0,0,0.75) 100%); pointer-events: none; }
+  #title { position: absolute; left: 0; right: 0; top: 150px; text-align: center; font-family: Cinzel, serif; font-size: 128px; letter-spacing: 0.32em; color: #f3d9a4; text-shadow: 0 0 40px rgba(255,80,40,0.5); opacity: 0; }
+  #kanji { position: absolute; right: 120px; top: 120px; font-family: serif; font-size: 160px; color: rgba(243,217,164,0.85); writing-mode: vertical-rl; letter-spacing: 0.2em; opacity: 0; }
+  #caps { position: absolute; left: 0; right: 0; bottom: 110px; }
+  .cap { position: absolute; left: 0; right: 0; bottom: 0; text-align: center; font-family: "Cormorant Garamond", serif; font-style: italic; font-size: 54px; color: #f6e9d2; text-shadow: 0 2px 24px rgba(0,0,0,0.9); opacity: 0; padding: 0 240px; }
+  #credit { position: absolute; left: 0; right: 0; bottom: 50px; text-align: center; font-family: Cinzel, serif; font-size: 26px; letter-spacing: 0.4em; color: #c9a46a; opacity: 0; }
+</style>
+</head>
+<body>
+  <div id="root" data-composition-id="main" data-start="0" data-duration="35.84" data-width="1920" data-height="1080">
+    <canvas id="gl" width="1920" height="1080" class="clip" data-start="0" data-duration="35.84" data-track-index="0"></canvas>
+    <div id="vignette"></div>
+    <h1 id="title" class="clip" data-start="0" data-duration="35.84" data-track-index="3">BUSHIDO</h1>
+    <div id="kanji" class="clip" data-start="0" data-duration="35.84" data-track-index="3">武士道</div>
+    <div id="caps">
+      <p class="cap clip" id="cap-intro" data-start="0" data-duration="8.04" data-track-index="2">In the age of warring states, a lone samurai walked the path of the sword.</p>
+      <p class="cap clip" id="cap-dawn" data-start="8.04" data-duration="9.08" data-track-index="2">At dawn, beneath the crimson sky, he drew his blade and faced the silence.</p>
+      <p class="cap clip" id="cap-duel" data-start="17.12" data-duration="10.04" data-track-index="2">Steel met steel. Every strike was a lifetime of discipline, every breath a vow.</p>
+      <p class="cap clip" id="cap-end" data-start="27.16" data-duration="8.68" data-track-index="2">When the dust settled, only honor remained. The way of the warrior endures.</p>
+    </div>
+    <div id="credit" class="clip" data-start="0" data-duration="35.84" data-track-index="3">THREE.JS · HYPERFRAMES · VOICE BY QWEN3-TTS 1.7B</div>
+    <audio id="vo-intro" src="audio/intro.wav" data-start="0.8" data-duration="5.84" data-track-index="1" data-volume="1"></audio>
+    <audio id="vo-dawn" src="audio/dawn.wav" data-start="8.84" data-duration="6.88" data-track-index="1" data-volume="1"></audio>
+    <audio id="vo-duel" src="audio/duel.wav" data-start="17.92" data-duration="7.84" data-track-index="1" data-volume="1"></audio>
+    <audio id="vo-end" src="audio/end.wav" data-start="27.96" data-duration="6.48" data-track-index="1" data-volume="1"></audio>
+  </div>
+  <script>window.__SCENES = [{"id":"intro","start":0,"duration":8.04,"audioStart":0.8},{"id":"dawn","start":8.04,"duration":9.08,"audioStart":8.84},{"id":"duel","start":17.12,"duration":10.04,"audioStart":17.92},{"id":"end","start":27.16,"duration":8.68,"audioStart":27.96}];</script>
+  <script type="module" src="scene.js"></script>
+  <script>
+  const tl = gsap.timeline({ paused: true });
+  tl.fromTo("#title", { opacity: 0, scale: 1.12 }, { opacity: 1, scale: 1, duration: 1.6, ease: "power3.out" }, 0.3);
+  tl.to("#title", { opacity: 0, duration: 0.8, ease: "power2.in" }, 7.04);
+  tl.fromTo("#kanji", { opacity: 0, y: -30 }, { opacity: 1, y: 0, duration: 1.2, ease: "power3.out" }, 8.04);
+  tl.to("#kanji", { opacity: 0, duration: 0.6 }, 16.52);
+  tl.fromTo("#cap-intro", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0.8);
+  tl.to("#cap-intro", { opacity: 0, duration: 0.5, ease: "power2.in" }, 7.44);
+  tl.fromTo("#cap-dawn", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 8.84);
+  tl.to("#cap-dawn", { opacity: 0, duration: 0.5, ease: "power2.in" }, 16.52);
+  tl.fromTo("#cap-duel", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 17.92);
+  tl.to("#cap-duel", { opacity: 0, duration: 0.5, ease: "power2.in" }, 26.56);
+  tl.fromTo("#cap-end", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 27.96);
+  tl.to("#cap-end", { opacity: 0, duration: 0.5, ease: "power2.in" }, 35.24);
+  tl.fromTo("#credit", { opacity: 0 }, { opacity: 1, duration: 1.0 }, 32.84);
+  tl.set({}, {}, 35.84);
+  window.__timelines["main"] = tl;
+  tl.seek(0);
+  </script>
+</body>
+</html>
